@@ -1,0 +1,35 @@
+name: .NET Build Workflow
+
+on:
+    push:
+        branches:
+            - '**'
+    schedule:
+        - cron: '0 * * * *' # Executa a cada hora
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Checkout do código
+            - name: Checkout code
+            uses: actions/checkout@v4
+
+            # Configuração do .NET SDK
+            - name: Setup .NET
+            uses: actions/setup-dotnet@v4
+            with:
+                dotnet-version: '7.x' # Substitua pela versão necessária
+
+            # Restaurar dependências
+            - name: Restore dependencies
+            run: dotnet restore
+
+            # Build do projeto
+            - name: Build project
+            run: dotnet build --configuration Release
+
+            # Script personalizado para exibir a data e hora da execução
+            - name: Custom script - Display date and time
+            run: echo "Workflow executed at $(date)"
