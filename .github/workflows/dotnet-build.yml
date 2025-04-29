@@ -18,9 +18,9 @@ jobs:
 
             # Configuração do .NET SDK
             - name: Setup .NET
-              uses: actions/setup-dotnet@v4
+              uses: actions/setup-dotnet@v3
               with:
-                dotnet-version: '7.x' # Substitua pela versão necessária
+                dotnet-version: '7.0' # Substitua pela versão necessária
 
             # Restaurar dependências
             - name: Restore dependencies
