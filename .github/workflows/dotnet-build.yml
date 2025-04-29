@@ -24,11 +24,11 @@ jobs:
 
             # Restaurar dependências
             - name: Restore dependencies
-              run: dotnet restore
+              run: dotnet restore **/*.csproj
 
             # Build do projeto
             - name: Build project
-              run: dotnet build --configuration Release
+              run: dotnet build **/*.csproj --no-restore
 
             # Script personalizado para exibir a data e hora da execução
             - name: Custom script - Display date and time
